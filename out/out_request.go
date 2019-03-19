@@ -19,6 +19,7 @@ type Source struct {
 	PrivateKey string        `json:"private_key" mapstructure:"private_key"`
 	Pool       string        `json:"pool"`
 	RetryDelay time.Duration `json:"retry_delay" mapstructure:"retry_delay"`
+	Depth      int           `json:"depth"`
 }
 
 func (s *Source) UnmarshalJSON(b []byte) error {

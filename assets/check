@@ -21,6 +21,7 @@ configure_credentials $payload
 uri=$(jq -r '.source.uri // ""' < $payload)
 branch=$(jq -r '.source.branch // ""' < $payload)
 pool_name=$(jq -r '.source.pool // ""' < $payload)
+depth=$(jq -r '.source.depth // ""' < $payload)
 ref=$(jq -r '.version.ref // ""' < $payload)
 
 
@@ -53,7 +54,11 @@ else
     branchflag="--branch $branch"
   fi
 
-  git clone $uri $branchflag $destination
+  if [ -z "$depth" ]; then
+    git clone $uri $branchflag $destination
+  else
+    git clone $uri $branchflag $destination --depth $depth
+  fi
   cd $destination
 fi
 

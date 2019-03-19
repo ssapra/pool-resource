@@ -72,6 +72,7 @@ filed named `.gitkeep`. Finally, create individual locks by making an empty file
   retrying to acquire a lock or release a lock. The default is 10 seconds.
   Valid values: `60s`, `90m`, `1h`.
 
+* `depth`: *Optional.* Use a shallow clone with a history truncated to the specified number of commits
 
 ## Behavior
 
@@ -122,7 +123,7 @@ One of the following is required.
   in the lock, respectively.
 
 * `add_claimed`: Exactly the same as the `add` param, but adds a lock to the
-  pool in the *claimed* state. 
+  pool in the *claimed* state.
 
 * `remove`: If set, we will remove the given lock from the pool. The value is
   the same as `release`. This can be used for e.g. tearing down an environment,

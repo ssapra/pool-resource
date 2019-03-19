@@ -22,7 +22,8 @@ var _ = Describe("OutRequest", func() {
 					"branch": "develop",
 					"private_key": "fake-private-key",
 					"pool": "fake-pool",
-					"retry_delay": "1h5m10s"
+					"retry_delay": "1h5m10s",
+					"depth": 1
 				}
 			}`)
 		})
@@ -36,6 +37,7 @@ var _ = Describe("OutRequest", func() {
 			Expect(request.Source.PrivateKey).To(Equal("fake-private-key"))
 			Expect(request.Source.Pool).To(Equal("fake-pool"))
 			Expect(request.Source.RetryDelay.String()).To(Equal("1h5m10s"))
+			Expect(request.Source.Depth).To(Equal(1))
 		})
 	})
 })
